@@ -1,8 +1,12 @@
 # AuditionCopilot
 使用图像识别实现劲舞团游戏自动跳舞机器人
-GIF图片预警：等待图片加载....
+
+超大GIF图片预警：等待图片加载....
+
 ![image](https://github.com/letmeseeseeu/AuditionCopilot/blob/main/Img/WeChat_20240710155659.gif)
-图片加载结束...
+
+上面是图片，如果没有的话大概是没有加载完成...
+
 基于https://github.com/JackQChen/CrazyDancer 进行的二次开发
 
                使用DD驱动按键进行模拟按键
