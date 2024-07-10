@@ -1,5 +1,8 @@
-# Audition-only-bot
+# AuditionCopilot
 使用图像识别实现劲舞团游戏自动跳舞机器人
+![image](https://github.com/letmeseeseeu/AuditionCopilot/blob/main/Img/WeChat_20240710155659.gif)
+
+
 基于https://github.com/JackQChen/CrazyDancer进行的二次开发
 
                使用DD驱动按键进行模拟按键
