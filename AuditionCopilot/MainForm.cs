@@ -42,7 +42,7 @@ namespace AuditionCopilot
         private bool prepare = true;
         private Bitmap bmp;
         private int left = 0;
-        private int lineX = 113; 
+        private int lineX = 118; 
         public static bool open = false;
         [DllImport("User32.dll")]
         private extern static IntPtr GetDC(IntPtr hWnd);
@@ -107,7 +107,7 @@ namespace AuditionCopilot
 
             UpdateLinePosition();
 
-           // Point? windowPosition = GetWindowPosition("劲舞团 华北二区");
+           // Point? windowPosition = GetWindowPosition("DjDjau.com");
 
 
 
@@ -117,7 +117,7 @@ namespace AuditionCopilot
             Point? windowPosition = GetWindowPosition("DjDjau.com");
 
             rectKeys = new Rectangle(windowPosition.Value.X+275, windowPosition.Value.Y+587, this.picKey1.Width, this.picKey1.Height); //275  560
-            rectBall = new Rectangle(windowPosition.Value.X+515, windowPosition.Value.Y+566, this.picBall1.Width, this.picBall1.Height);//502  539
+            rectBall = new Rectangle(windowPosition.Value.X+515, windowPosition.Value.Y+566, this.picBall1.Width, this.picBall1.Height);//由于私服公告栏的原因,官方用户如果不能正确识别按键，适当将566的值改小,例如536
             bmp = new Bitmap(rectBall.Width, rectBall.Height, PixelFormat.Format32bppArgb);
             var unit = GraphicsUnit.Pixel;
             dicTemplate[Keys.NumPad4] = Resources.numpad_4.Clone(Resources.numpad_4.GetBounds(ref unit), PixelFormat.Format8bppIndexed);
@@ -178,7 +178,7 @@ namespace AuditionCopilot
                     }
                     currX = newX;
 
-                    if (this.inputAvailable && prepare==true && percent > 80 && checkBox1.Checked)
+                    if (this.inputAvailable && prepare==true && percent > 80 && checkBox1.Checked && newX > lineX + 6 )
                     {
                         this.Invoke(new Action( () =>
                         {
@@ -189,7 +189,7 @@ namespace AuditionCopilot
                     }
 
 
-                    if (prepare == false && percent >60 && percent < 70)
+                    if (prepare == false && percent >75 && percent < 80)
                     {
 
                         this.Invoke(new Action(() =>
@@ -198,7 +198,7 @@ namespace AuditionCopilot
                             prepare = true;
                         }));
                     }
-                    Delay(1);
+                    Thread.Sleep(1);
                 }
             });
 
@@ -250,7 +250,7 @@ namespace AuditionCopilot
             if (blobs.Length == 1)
             {
 
-                if (this.radioButton1.Checked && blobs[0].CenterOfGravity.X >= lineX + Convert.ToDouble(textBox2.Text) && blobs[0].CenterOfGravity.X <= lineX + 8)
+                if (this.radioButton1.Checked && blobs[0].CenterOfGravity.X >= lineX + Convert.ToDouble(textBox2.Text) && blobs[0].CenterOfGravity.X <= lineX + 5)
                 {
                     Task.Run(() => PressKey()); 
                     Console.WriteLine(blobs[0].CenterOfGravity.X);                        
